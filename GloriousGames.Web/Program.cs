@@ -1,6 +1,17 @@
+using GloriousGames.Web;
+using GloriousGames.Web.Services;
+using GloriousGames.Web.Services.IServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<IProductService, ProductService>();
+//SD.ProductAPIBase = builder.Configuration["ServiceUrls: ProductAPI"];
+SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
+//SD.ProductAPIBase = "https://localhost:7137";
+builder.Services.AddScoped<IProductService, ProductService>();
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
