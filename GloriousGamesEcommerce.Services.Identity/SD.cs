@@ -38,8 +38,8 @@ namespace GloriousGamesEcommerce.Services.Identity
                      ClientId="gloriousgames",
                      ClientSecrets= { new Secret("secret".Sha256())},
                      AllowedGrantTypes = GrantTypes.Code,
-                     RedirectUris= { "https://localhost:44360/signin-oidc" },
-                     PostLogoutRedirectUris={ "https://localhost:44360/signout-callback-oidc" },
+                     RedirectUris= { "https://localhost:7100/signin-oidc" },
+                     PostLogoutRedirectUris={ "https://localhost:7100/signout-callback-oidc" },
                      AllowedScopes= new List<string>
                      {
                          IdentityServerConstants.StandardScopes.OpenId,
