@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models.Dto;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Models
 {

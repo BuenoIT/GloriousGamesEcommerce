@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.DbContexts
 {
@@ -8,7 +9,9 @@ namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.DbContexts
         {
         }
 
-       // public DbSet<Product> Products { get; set; }
+       public DbSet<Product> Products { get; set; }
+       public DbSet<CartHeader> CartHeaders { get; set; }
+       public DbSet<CartDetails> CartDetails { get; set; }
 
     }
 }
