@@ -1,5 +1,4 @@
-﻿using GloriousGamesEcommerce.Services.ProductAPI.Models;
-using GloriousGamesEcommerce.Services.ProductAPI.Models.Dto;
+﻿using GloriousGamesEcommerce.Services.ProductAPI.Models.Dto;
 using GloriousGamesEcommerce.Services.ProductAPI.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

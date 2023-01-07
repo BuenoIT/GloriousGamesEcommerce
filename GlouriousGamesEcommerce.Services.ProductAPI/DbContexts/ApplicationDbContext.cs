@@ -1,4 +1,4 @@
-﻿using GloriousGamesEcommerce.Services.ProductAPI.Models.Dto;
+﻿using GloriousGamesEcommerce.Services.ProductAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GlouriousGamesEcommerce.Services.ProductAPI.DbContexts

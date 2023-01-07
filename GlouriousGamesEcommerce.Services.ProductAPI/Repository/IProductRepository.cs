@@ -1,4 +1,4 @@
-﻿using GloriousGamesEcommerce.Services.ProductAPI.Models;
+﻿using GloriousGamesEcommerce.Services.ProductAPI.Models.Dto;
 
 namespace GloriousGamesEcommerce.Services.ProductAPI.Repository
 {
