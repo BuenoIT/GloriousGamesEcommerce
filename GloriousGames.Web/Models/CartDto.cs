@@ -1,6 +1,4 @@
-﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models.Dto;
-
-namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Models
+﻿namespace GloriousGames.Web.Models
 {
     public class CartDto
     {
