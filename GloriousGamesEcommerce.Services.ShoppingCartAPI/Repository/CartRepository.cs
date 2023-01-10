@@ -17,6 +17,15 @@ namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Repository
             _mapper = mapper;
         }
 
+        public async Task<bool> ApplyCoupon(string userId, string couponCode)
+        {
+            var cartFromDb = await _dbContext.CartHeaders.FirstOrDefaultAsync(x => x.UserId == userId);
+            cartFromDb.CouponCode= couponCode;
+            _dbContext.CartHeaders.Update(cartFromDb);
+            await _dbContext.SaveChangesAsync();
+            return true;
+
+        }
 
         public async Task<bool> ClearCart(string userId)
         {
@@ -88,6 +97,15 @@ namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Repository
             cart.CartDetails = _dbContext.CartDetails.Where(u => u.CartHeaderId == cart.CartHeader.CartHeaderId).Include(u => u.Product);
 
             return _mapper.Map<CartDto>(cart);
+        }
+
+        public async Task<bool> RemoveCoupon(string userId)
+        {
+            var cartFromDb = await _dbContext.CartHeaders.FirstOrDefaultAsync(x => x.UserId == userId);
+            cartFromDb.CouponCode = "";
+            _dbContext.CartHeaders.Update(cartFromDb);
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> RemoveFromCart(int cartDetailsId)
