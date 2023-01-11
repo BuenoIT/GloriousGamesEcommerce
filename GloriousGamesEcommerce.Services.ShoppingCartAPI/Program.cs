@@ -1,4 +1,5 @@
 using AutoMapper;
+using GloriousGamesEcommerce.MessageBus;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.DbContexts;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.Repository;
@@ -13,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddSingleton<IMessageBus, AzureServiceBusMessageBus>();
 
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);

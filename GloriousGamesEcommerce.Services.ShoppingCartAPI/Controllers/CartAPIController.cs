@@ -1,4 +1,5 @@
-﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Messages;
+﻿using GloriousGamesEcommerce.MessageBus;
+using GloriousGamesEcommerce.Services.ShoppingCartAPI.Messages;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models.Dto;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.Repository;
@@ -12,12 +13,14 @@ namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Controllers
     {
 
         private readonly ICartRepository _cartRepository;
+        private readonly IMessageBus _messageBus;
         protected ResponseDto _response;
 
-        public CartAPIController(ICartRepository cartRepository)
+        public CartAPIController(ICartRepository cartRepository, IMessageBus messageBus)
         {
             _cartRepository= cartRepository;
             this._response= new ResponseDto();
+            _messageBus= messageBus;
         }
 
         [HttpGet("GetCart/{userId}")]
@@ -135,6 +138,7 @@ namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Controllers
                 }
                 checkoutHeader.CartDetails = cartDto.CartDetails;
                 //logic to add message to process order.
+                await _messageBus.PublishMessage(checkoutHeader, "checkoutmessagetopic");
 
 
             }

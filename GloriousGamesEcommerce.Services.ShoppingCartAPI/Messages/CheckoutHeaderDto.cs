@@ -1,8 +1,9 @@
-﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models.Dto;
+﻿using GloriousGamesEcommerce.MessageBus;
+using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models.Dto;
 
 namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Messages
 {
-    public class CheckoutHeaderDto
+    public class CheckoutHeaderDto : BaseMessage
     {
         public int CartHeaderId { get; set; }
         public string UserId { get; set; }
