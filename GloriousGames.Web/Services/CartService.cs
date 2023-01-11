@@ -34,6 +34,17 @@ namespace GloriousGames.Web.Services
             });
         }
 
+        public async Task<T> Checkout<T>(CartHeaderDto cartHeader, string token = null)
+        {
+            return await this.SendAsync<T>(new ApiRequest()
+            {
+                ApiType = SD.ApiType.POST,
+                Data = cartHeader,
+                Url = SD.ShoppingCartAPIBase + "/api/cart/checkout",
+                AccessToken = token
+            });
+        }
+
         public async Task<T> GetCartByUserIdAsync<T>(string userId, string token = null)
         {
             return await this.SendAsync<T>(new ApiRequest()

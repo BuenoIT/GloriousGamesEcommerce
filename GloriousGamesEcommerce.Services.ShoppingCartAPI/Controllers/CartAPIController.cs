@@ -1,4 +1,5 @@
-﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models;
+﻿using GloriousGamesEcommerce.Services.ShoppingCartAPI.Messages;
+using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.Models.Dto;
 using GloriousGamesEcommerce.Services.ShoppingCartAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -112,6 +113,30 @@ namespace GloriousGamesEcommerce.Services.ShoppingCartAPI.Controllers
             {
                 bool isSuccess = await _cartRepository.RemoveCoupon(userId);
                 _response.Result = isSuccess;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+
+            return _response;
+        }
+
+        [HttpPost("Checkout")]
+        public async Task<object> Checkout(CheckoutHeaderDto checkoutHeader)
+        {
+            try
+            {
+                CartDto cartDto = await _cartRepository.GetCarByUserId(checkoutHeader.UserId);
+                if (cartDto == null)
+                {
+                    return BadRequest();
+                }
+                checkoutHeader.CartDetails = cartDto.CartDetails;
+                //logic to add message to process order.
+
+
             }
             catch (Exception ex)
             {
